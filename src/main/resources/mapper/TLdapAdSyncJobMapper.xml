@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.active_directory.mapper.TLdapAdSyncJobMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.active_directory.domain.TLdapAdSyncJob">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="domainId" column="domain_id" jdbcType="BIGINT"/>
+            <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+            <result property="ouTotal" column="ou_total" jdbcType="INTEGER"/>
+            <result property="ouSuccess" column="ou_success" jdbcType="INTEGER"/>
+            <result property="ouError" column="ou_error" jdbcType="INTEGER"/>
+            <result property="userTotal" column="user_total" jdbcType="INTEGER"/>
+            <result property="userSuccess" column="user_success" jdbcType="INTEGER"/>
+            <result property="userError" column="user_error" jdbcType="INTEGER"/>
+            <result property="log" column="log" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,domain_id,begin_time,
+        end_time,ou_total,ou_success,
+        ou_error,user_total,user_success,
+        user_error,log
+    </sql>
+    <select id="list" resultType="com.plzy.ldap.modules.active_directory.domain.TLdapAdSyncJob">
+
+        select j.id,d.name as domain,d.domain_name,c.sync_url,c.domain_name as sync_domain_name,begin_time,end_time,ou_total,ou_success,ou_error,user_total,user_success,user_error,result from t_ldap_ad_sync_job j left join t_ldap_domain d on j.domain_id=d.id left join t_ldap_ad_sync_config c on d.ad_config_ref_id=c.id
+        where j.domain_id=#{domainId}
+        <if test="beginTime!=null">
+            and #{beginTime} &lt;=  begin_time
+        </if>
+        <if test="endTime!=null">
+            and  #{endTime} &gt;= end_time
+        </if>
+        <if test="result!=null">
+            and result= #{result}
+        </if>
+        order by begin_time desc
+    </select>
+</mapper>

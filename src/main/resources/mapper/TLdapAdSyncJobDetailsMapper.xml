@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.active_directory.mapper.TLdapAdSyncJobDetailsMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.active_directory.domain.TLdapAdSyncJobDetails">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="adSyncJobId" column="ad_sync_job_id" jdbcType="BIGINT"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="updateType" column="update_type" jdbcType="VARCHAR"/>
+            <result property="result" column="result" jdbcType="TINYINT"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,ad_sync_job_id,type,
+        name,update_type,result,
+        time
+    </sql>
+    <select id="getStat" resultType="java.util.Map">
+        select CONCAT(type,"-",update_type) as `key`,count(1) as `value` from t_ldap_ad_sync_job_details where ad_sync_job_id=#{adSyncJobId} group by type,update_type
+    </select>
+
+</mapper>

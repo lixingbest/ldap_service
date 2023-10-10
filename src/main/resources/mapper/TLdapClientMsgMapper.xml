@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.message.mapper.TLdapClientMsgMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.message.dto.ClientMessageDto">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="sendTime" column="send_time" jdbcType="TIMESTAMP"/>
+        <result property="receiverType" column="receiver_type" jdbcType="TINYINT"/>
+        <collection property="receiverList" ofType="com.plzy.ldap.modules.message.domain.TLdapClientMsgReceiver">
+            <id property="id" column="r_id" jdbcType="BIGINT"/>
+            <result property="clientMsgId" column="client_msg_id" jdbcType="BIGINT"/>
+            <result property="type" column="r_type" jdbcType="TINYINT"/>
+            <result property="refId" column="ref_id" jdbcType="BIGINT"/>
+            <result property="isRecv" column="is_recv" jdbcType="TINYINT"/>
+            <result property="recvTime" column="recv_time" jdbcType="TIMESTAMP"/>
+        </collection>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,title,content,
+        time,user_id,type,
+        send_time,receiver_type
+    </sql>
+    <select id="getpage" resultType="com.plzy.ldap.modules.message.dto.ClientMessageDto">
+        select m.id, title, content, time, user_id, type, send_time, receiver_type,a.name userName
+        from t_ldap_client_msg m
+        left join t_sys_admin a on m.user_id = a.id
+        <where>
+            <if test="message.title!=null and message.title!=''">
+                and title like concat('%',#{message.title},'%')
+            </if>
+            <if test="message.type!=null">
+                and type = #{message.type}
+            </if>
+            <if test="message.receiverType!=null">
+                and receiver_type = #{message.receiverType}
+            </if>
+        </where>
+    </select>
+    <select id="getInfoById" resultMap="BaseResultMap">
+        select m.id, title, content, time, user_id, m.type, send_time, receiver_type,
+               tlcmr.id as r_id, client_msg_id, tlcmr.type as r_type, ref_id, is_recv, recv_time
+        from t_ldap_client_msg m
+                 left join t_ldap_client_msg_receiver tlcmr on m.id = tlcmr.client_msg_id
+        where m.id= #{id}
+    </select>
+</mapper>

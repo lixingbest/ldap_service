@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.ldapLoginLimit.mapper.TLdapLoginLimitMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.ldap_login_limit.domain.TLdapLoginLimit">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="domainId" column="domain_id" jdbcType="BIGINT"/>
+            <result property="uid" column="uid" jdbcType="VARCHAR"/>
+            <result property="loginDateBegin" column="login_date_begin" jdbcType="TIMESTAMP"/>
+            <result property="loginDateEnd" column="login_date_end" jdbcType="TIMESTAMP"/>
+            <result property="loginTimeBegin" column="login_time_begin" jdbcType="VARCHAR"/>
+            <result property="loginTimeEnd" column="login_time_end" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,domain_id,uid,
+        login_date_begin,login_date_end,login_time_begin,
+        login_time_end
+    </sql>
+</mapper>

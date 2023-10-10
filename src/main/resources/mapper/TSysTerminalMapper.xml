@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.terminal.mapper.TSysTerminalMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.terminal.domain.TSysTerminal">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="hostname" column="hostname" jdbcType="VARCHAR"/>
+        <result property="ipv4" column="ipv4" jdbcType="VARCHAR"/>
+        <result property="sshPort" column="ssh_port" jdbcType="INTEGER"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="typeId" column="type_id" jdbcType="BIGINT"/>
+        <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,hostname,ipv4,
+        ssh_port,account,password,
+        type_id,comments
+    </sql>
+    <select id="getPage" resultType="com.plzy.ldap.modules.terminal.domain.TSysTerminal">
+        select * from ldap.t_sys_terminal
+        where type_id in
+        <foreach collection="typeIds" item="id" close=")" open="(" separator=",">#{id}</foreach>
+        <if test="null!=param and ''!=param">
+            and (hostname like concat('%',#{param},'%')
+            or account like concat('%',#{param},'%')
+            or ipv4 like concat('%',#{param},'%')
+            )
+        </if>
+        order by id desc
+    </select>
+    <select id="getList" resultType="com.plzy.ldap.modules.terminal.domain.TSysTerminal">
+        select * from ldap.t_sys_terminal
+        where type_id in
+        <foreach collection="typeIds" item="id" close=")" open="(" separator=",">#{id}</foreach>
+        <if test="null!=param and ''!=param">
+            and (hostname like concat('%',#{param},'%')
+            or account like concat('%',#{param},'%')
+            or ipv4 like concat('%',#{param},'%')
+            )
+        </if>
+        order by id desc
+    </select>
+</mapper>

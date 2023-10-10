@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /service
+
+ldap:
+  ldif_upload_path: /opt/ldap/upload/ldif
+  cacheTTL: 600000
+  serviceUrl: http://10.100.39.31:8080/service/
+  tempPath: /opt/temp
+  ansiblePath: /usr/bin/ansible
+  strategy:
+    strategy_wallpaper_upload_path: /opt/ldap/upload/wallpaper
+    strategyPyscriptPath: /opt/ldap/pyscript
+    sudo_account:
+      account: user
+      password: qwer1234
+  # 接口超时时间，单位：分钟
+  session-timeout: 720
+  # ldap域控服务器的前缀，用于界面中区别哪些是域控哪些是普通终端
+  dc-prefix: ldap
+  # ldap缓存时间
+  ldap-cache-timeout: 43200000
+  sudoUserPasswd: '{"zs.intrab.com": "user,qwer1234"}'
+
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      strict: false
+      datasource:
+        master:
+          url: "jdbc:mysql://172.9.1.136/ldap?characterEncoding=utf-8"
+          username: "root"
+          password: "tswcbyy5413LX"
+
+  application:
+    name: ldapservice
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: INFO
+  file:
+    path: /opt/ldap/logs/
+    max-size: 500MB
+    max-history: 10
+
+# ===== 自定义swagger配置 ===== #
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: ldapservice
+  try-host: http://localhost:${server.port}

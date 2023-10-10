@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.resource.mapper.TResourceMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.resource.domain.TResource">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="idx" column="idx" jdbcType="INTEGER"/>
+        <result property="enable" column="enable" jdbcType="BOOLEAN"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,code,
+        url,icon,idx,
+        enable
+    </sql>
+    <select id="getList" resultType="com.plzy.ldap.modules.resource.domain.TResource">
+        select *
+        from t_resource
+        where true
+        <if test="name!=null">and name like concat('%',#{name},'%')</if>
+    </select>
+    <select id="getListByRoleId" resultType="com.plzy.ldap.modules.resource.domain.TResource">
+        select tr.*
+        from t_role_res_ref rr
+                 left join t_role trr on trr.id = rr.role_id
+                 left join t_resource tr on rr.res_id = tr.id
+        where rr.role_id = #{roleId}
+          and tr.enable = 0
+          and trr.enable = 0
+        order by tr.idx
+    </select>
+    <select id="getListByPid" resultType="com.plzy.ldap.modules.resource.domain.TResource">
+        select *
+        from t_resource
+        where true
+        <if test="pid==null">and isNull(pid)</if>
+        <if test="pid!=null">and pid=#{pid}</if>
+
+    </select>
+    <select id="getPageByPid" resultType="com.plzy.ldap.modules.resource.domain.TResource">
+        select *
+        from t_resource
+        where true
+        <if test="pid==null">and isNull(pid)</if>
+        <if test="pid!=null">and pid=#{pid}</if>
+        <if test="name!=null">and name like concat('%',#{name},'%')</if>
+        order by idx
+    </select>
+    <select id="getParentList" resultType="com.plzy.ldap.modules.resource.domain.TResource">
+        select t.* ,IFNULL(a.c,0) as count
+        from t_resource t
+                 left join (select pid ,count(1) as c from t_resource where type=1 group by pid) a
+                           on a.pid = t.id where type=0
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.strategy.settings.mapper.TLdapOuStrategySettingsRefMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.strategy.settings.domain.TLdapOuStrategySettingsRef">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="ouId" column="ou_id" jdbcType="BIGINT"/>
+            <result property="strategyId" column="strategy_id" jdbcType="BIGINT"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,ou_id,strategy_id,
+        update_time
+    </sql>
+    <select id="getByOuId"
+            resultType="com.plzy.ldap.modules.strategy.settings.dto.LdapStrategySettingsDetails">
+        select l.*,r.enable,r.id as refid from t_ldap_ou_strategy_settings_ref r left join
+             t_ldap_strategy_settings_list l on r.strategy_id=l.id where r.ou_id=#{ouId}
+    </select>
+</mapper>

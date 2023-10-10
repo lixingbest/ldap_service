@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.active_directory.mapper.TLdapAdSyncConfigMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.active_directory.domain.TLdapAdSyncConfig">
+            <result property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="domainName" column="domain_name" jdbcType="VARCHAR"/>
+            <result property="syncUrl" column="sync_url" jdbcType="VARCHAR"/>
+            <result property="adminName" column="admin_name" jdbcType="VARCHAR"/>
+            <result property="adminPasswd" column="admin_passwd" jdbcType="VARCHAR"/>
+            <result property="baseDn" column="base_dn" jdbcType="VARCHAR"/>
+            <result property="userFilterExpr" column="user_filter_expr" jdbcType="VARCHAR"/>
+            <result property="ouFilterExpr" column="ou_filter_expr" jdbcType="VARCHAR"/>
+            <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,domain_name,
+        sync_url,admin_name,admin_passwd,
+        base_dn,user_filter_expr,ou_filter_expr,
+        comments
+    </sql>
+</mapper>

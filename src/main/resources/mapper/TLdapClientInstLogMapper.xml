@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.client.mapper.TLdapClientInstLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.client.domain.TLdapClientInstLog">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="hostname" column="hostname" jdbcType="VARCHAR"/>
+            <result property="clientVersion" column="client_version" jdbcType="VARCHAR"/>
+            <result property="arch" column="arch" jdbcType="VARCHAR"/>
+            <result property="sysVersion" column="sys_version" jdbcType="VARCHAR"/>
+            <result property="user" column="user" jdbcType="VARCHAR"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+            <result property="step" column="step" jdbcType="TINYINT"/>
+            <result property="result" column="result" jdbcType="TINYINT"/>
+            <result property="log" column="log" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,hostname,client_version,
+        arch,sys_version,user,
+        ip,begin_time,end_time,
+        step,result,log
+    </sql>
+    <select id="getInstallStat" resultType="java.util.Map">
+        select bt as `key`,num as `value` from
+        (select bt,count(1) as num,STR_TO_DATE(bt,"%Y/%m/%d") as btobj FROM
+        (select concat(year(begin_time),"/",MONTH(begin_time),"/",day(begin_time)) as bt,l.* from t_ldap_client_inst_log l where domain=#{domainDn}) o GROUP BY bt) b ORDER BY b.btobj asc
+    </select>
+</mapper>

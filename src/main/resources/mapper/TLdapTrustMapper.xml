@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.trust.mapper.TLdapTrustMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.trust.domain.TLdapTrust">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="domain_id" column="domain_id" jdbcType="BIGINT"/>
+            <result property="trust_domain_id" column="trust_domain_id" jdbcType="BIGINT"/>
+            <result property="ou_id" column="trust_ou_id" jdbcType="BIGINT"/>
+            <result property="uid" column="trust_uid" jdbcType="BIGINT"/>
+            <result property="enable" column="enable" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,type,domain_id,
+        trust_domain_id,ou_id,uid,
+        enable
+    </sql>
+    <select id="tree" resultType="com.plzy.ldap.modules.trust.dto.TrustTree">
+        select concat(id, '-', '0')                                  as id,
+               concat(pid, '-0')                                     as pid,
+               name,
+               dn,
+               (select IF(count(1) = 0, 'false', 'true')
+                from t_ldap_trust
+                where type = 3 and trust_uid = #{uid} and domain_id = dc.id) as checked
+        from t_ldap_domain dc
+    </select>
+</mapper>

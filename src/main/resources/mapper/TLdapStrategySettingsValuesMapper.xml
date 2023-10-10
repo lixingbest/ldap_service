@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.strategy.settings.mapper.TLdapStrategySettingsValuesMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.strategy.settings.domain.TLdapStrategySettingsValues">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="strategyId" column="strategy_id" jdbcType="BIGINT"/>
+            <result property="key" column="name" jdbcType="VARCHAR"/>
+            <result property="value" column="value" jdbcType="VARCHAR"/>
+            <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,strategy_id,key,
+        value,comments
+    </sql>
+    <select id="getConfig"
+            resultType="com.plzy.ldap.modules.strategy.settings.domain.TLdapStrategySettingsValues">
+        SELECT v.* FROM t_ldap_ou_strategy_settings_ref r, t_ldap_strategy_settings_values v where r.strategy_id=v.strategy_id and r.ou_id=#{ouId}
+    </select>
+    <select id="getValues"
+            resultType="com.plzy.ldap.modules.strategy.settings.dto.TLdapStrategySettingsValuesDTO">
+        SELECT v.*,c.name from t_ldap_strategy_settings_values v,t_ldap_strategy_settings_command c WHERE v.command_id=c.id and v.strategy_id=#{strategyId}
+    </select>
+</mapper>

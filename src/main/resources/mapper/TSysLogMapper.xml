@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.sys_log.mapper.TSysLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.sys_log.domain.TSysLog">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+            <result property="uri" column="uri" jdbcType="BIGINT"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="message" column="message" jdbcType="VARCHAR"/>
+            <result property="data" column="data" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,time,
+        uri,type,message,
+        data
+    </sql>
+    <select id="list" resultType="com.plzy.ldap.modules.sys_log.domain.TSysLog">
+        select o.*,a.name as username,a.jobno from
+        (select d.name as domain_name,l.* from t_sys_log l left join t_ldap_domain d on l.domain_id=d.id) o
+        left join t_sys_admin a on o.user_id=a.id where o.domain_id=#{domainId}
+        <if test="null != jobNo">
+            and a.jobno=#{jobNo}
+        </if>
+        <if test="null != beginDate">
+            and o.time &gt;= #{beginDate}
+        </if>
+        <if test="null != endDate">
+            and o.time &lt;= #{endDate}
+        </if>
+        <if test="menu != null and menu!=''">
+            and o.menu=#{menu}
+        </if>
+        <if test="message != null and message!=''">
+            and o.message like concat('%',#{message},'%')
+        </if>
+    </select>
+    <select id="countByMessage" resultType="java.util.Map">
+        select message,count(id) as count from t_sys_log where domain_id = #{domainId} group by message
+
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.deploy.mapper.TLdapDeployDetailsMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.deploy.domain.TLdapDeployDetails">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="mainId" column="main_id" jdbcType="BIGINT"/>
+            <result property="terminalId" column="terminal_id" jdbcType="BIGINT"/>
+            <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+            <result property="execLog" column="exec_log" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,main_id,terminal_id,
+        begin_time,end_time,exec_log,
+        status
+    </sql>
+</mapper>

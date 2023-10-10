@@ -1,0 +1,5 @@
+# Separate this file instead of adding it to yml, because the password will cause an error
+server.ssl.key-store=classpath:keystore.p12
+server.ssl.key-store-password=woshishui.5413LX
+server.ssl.key-store-type=PKCS12
+server.ssl.key-alias=ldap

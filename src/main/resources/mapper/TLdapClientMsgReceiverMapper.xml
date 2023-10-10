@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.message.mapper.TLdapClientMsgReceiverMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.message.domain.TLdapClientMsgReceiver">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="clientMsgId" column="client_msg_id" jdbcType="BIGINT"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="refId" column="ref_id" jdbcType="BIGINT"/>
+            <result property="isRecv" column="is_recv" jdbcType="TINYINT"/>
+            <result property="recvTime" column="recv_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,client_msg_id,type,
+        ref_id,is_recv,recv_time
+    </sql>
+</mapper>

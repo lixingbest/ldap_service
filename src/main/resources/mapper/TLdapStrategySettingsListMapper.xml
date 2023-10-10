@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.strategy.settings.mapper.TLdapStrategySettingsListMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.strategy.settings.domain.TLdapStrategySettingsList">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="domainId" column="domain_id" jdbcType="BIGINT"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,domain_id,type,
+        name,code,comments
+    </sql>
+    <select id="list" resultType="com.plzy.ldap.modules.strategy.settings.dto.LdapStrategySettingsListDTO">
+        select * from (
+                          (select 'domain' as type, concat('2_', id) as id, if(pid is null, null, concat('2_', pid)) as pid, name, code,ord_idx
+                           from t_ldap_domain
+                           where up_status = 0 order by ord_idx asc)
+                          union all
+                          (select if(type = 0, 'folder', 'strategy'), id, if(pid is null, concat('2_', domain_id), pid) as pid, name, code,null as ord_idx
+                           from t_ldap_strategy_settings_list)
+                      ) o order by ord_idx asc
+    </select>
+    <select id="treeByDomain"
+            resultType="com.plzy.ldap.modules.strategy.settings.dto.LdapStrategySettingsListDTO">
+        select if(type = 0, 'folder', 'strategy') as type, id, pid, name, code
+        from t_ldap_strategy_settings_list
+        where domain_id = #{domainId}
+    </select>
+    <select id="getAppliedOU" resultType="com.plzy.ldap.modules.strategy.settings.dto.StrategySettingOuDto">
+        select o.*, r.enable, r.id refId
+        from t_ldap_ou_strategy_settings_ref r
+                 left join t_ldap_ou o on r.ou_id = o.id
+        where strategy_id = #{id}
+    </select>
+    <select id="listByOUId"
+            resultType="com.plzy.ldap.modules.strategy.settings.dto.LdapStrategySettingsDetails">
+        select d.dn as domain_dn,i.* FROM
+            (select l.*,r.id as refid,r.`enable`,r.ou_id from t_ldap_ou_strategy_settings_ref r left join t_ldap_strategy_settings_list l
+        on r.strategy_id=l.id) i left join t_ldap_domain d on i.domain_id=d.id where i.ou_id=#{ouId}
+    </select>
+    <select id="listCommands"
+            resultType="com.plzy.ldap.modules.strategy.settings.dto.StrategySettingsCommandDto">
+        select c.*,v.value from t_ldap_strategy_settings_values v left join t_ldap_strategy_settings_command c
+          on v.command_id=c.id where strategy_id=#{strategyId}
+    </select>
+    <select id="statStrategy" resultType="java.util.Map">
+        select 'public' as type, count(1) as num from t_ldap_strategy_settings_command where scope=0
+        union ALL
+        select 'private' as type, count(1)  as num from t_ldap_strategy_settings_list where domain_id=#{domainId}
+        union ALL
+        select 'used' as type,count(1) as num from (select DISTINCT strategy_id from t_ldap_ou_strategy_settings_ref ) o
+    </select>
+</mapper>

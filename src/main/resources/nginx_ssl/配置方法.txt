@@ -1,0 +1,17 @@
+server {
+    listen       443 ssl;
+    server_name  localhost;
+    ssl_certificate C://nginx-1.20.2/conf/ldap.cer;
+    ssl_certificate_key C://nginx-1.20.2/conf/ldap.key;
+
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on;
+
+    location / {
+        root   html;
+        index  index.html index.htm;
+    }
+}

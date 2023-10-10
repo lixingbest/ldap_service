@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.cross_trust.mapper.TLdapCrossTrustMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.cross_trust.domain.TLdapCrossTrust">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="srcDomainId" column="src_domain_id" jdbcType="BIGINT"/>
+            <result property="targetDomainId" column="target_domain_id" jdbcType="BIGINT"/>
+            <result property="ouId" column="ou_id" jdbcType="BIGINT"/>
+            <result property="uid" column="uid" jdbcType="VARCHAR"/>
+            <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+            <result property="enable" column="enable" jdbcType="TINYINT"/>
+            <result property="reason" column="reason" jdbcType="VARCHAR"/>
+            <result property="createUserId" column="create_user_id" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="syncStatus" column="sync_status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,src_domain_id,target_domain_id,
+        ou_id,uid,begin_time,
+        end_time,enable,reason,
+        create_user_id,create_time,sync_status
+    </sql>
+    <select id="getNewRecords" resultType="com.plzy.ldap.modules.cross_trust.domain.TLdapCrossTrust">
+        select * from t_ldap_cross_trust where enable=0 and sync_status=0
+<!--        select * from t_ldap_cross_trust where enable=0 and begin_time &lt;= now() and end_time &gt;= now() and sync_status=0 and enable=0-->
+    </select>
+    <select id="getTrustUsers" resultType="com.plzy.ldap.modules.cross_trust.dto.TLdapCrossTrustDTO">
+        select t.*,o.`name` as ou_name,(select `name` from t_ldap_domain where id=t.target_domain_id) as target_domain_name  from t_ldap_cross_trust t left join t_ldap_ou o on t.ou_id=o.id where t.src_domain_id=#{srcDomainId}
+        <if test="targetDomainId!=null">
+            and t.target_domain_id=#{targetDomainId}
+        </if>
+        <if test="ouId!=null">
+            and t.ou_id=#{ouId}
+        </if>
+        <if test="uid!=null">
+            and t.uid like concat('%',#{uid},'%')
+        </if>
+    </select>
+</mapper>

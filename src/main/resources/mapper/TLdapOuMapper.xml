@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.ou.mapper.TLdapOuMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.ou.domain.TLdapOu">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="province" column="province" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="district" column="district" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="postal_code" column="postal_code" jdbcType="VARCHAR"/>
+        <result property="comments" column="comments" jdbcType="VARCHAR"/>
+        <result property="delProtect" column="del_protect" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,pid,name,
+        province,city,district,
+        address,postal_code,comments,
+        del_protect
+    </sql>
+    <select id="tree" resultType="java.util.Map">
+        select concat(id, '-1')                                                          as `key`,
+               concat(pid, '-', pid_type)                                                as pid,
+               pid_type,
+               concat('{"province":"', COALESCE(province, ''), '","city":"', COALESCE(city, ''), '","district":"',
+                      COALESCE(district, ''), '","address":"', COALESCE(address, ''), '","postal_code":"',
+                      COALESCE(postal_code, ''), '","comments":"', COALESCE(comments, ''), '","delProtect":',
+                      COALESCE(del_protect, '0'), ',"name":"', COALESCE(name, ''), '","pid":',pid,',"pidType":',pid_type,',"id": ',id,'}') as data,
+               province,
+               city,
+               district,
+               address,
+               postal_code,
+               comments,
+               del_protect,
+               name
+        from t_ldap_ou
+    </select>
+    <select id="bulkExport" resultType="com.plzy.ldap.modules.ou.domain.TLdapOu">
+        SELECT au.id, au.pid, pid_type, name, province, city, district, address, postal_code, del_protect, comments, domain_id, dn, ord_idx
+        FROM (SELECT * FROM t_ldap_ou WHERE pid IS NOT NULL) au,
+             (SELECT @pid := #{pid}) pd
+        WHERE FIND_IN_SET(pid, @pid) > 0 and @pid := concat(@pid, ',', id)
+        UNION
+        SELECT id, pid, pid_type, name, province, city, district, address, postal_code, del_protect, comments, domain_id, dn, ord_idx
+        FROM t_ldap_ou
+        WHERE id = #{pid}
+        ORDER BY id;
+    </select>
+</mapper>

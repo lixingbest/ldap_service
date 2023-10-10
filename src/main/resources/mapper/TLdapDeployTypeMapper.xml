@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.deploy.mapper.TLdapDeployTypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.deploy.domain.TLdapDeployType">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
+            <result property="pid" column="pid" jdbcType="BIGINT"/>
+            <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,code,
+        pid,comments
+    </sql>
+</mapper>

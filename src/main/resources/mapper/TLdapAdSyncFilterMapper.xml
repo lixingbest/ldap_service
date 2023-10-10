@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.active_directory.mapper.TLdapAdSyncFilterMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.active_directory.domain.TLdapAdSyncFilter">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="expr" column="expr" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="syncConfigId" column="sync_config_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,expr,type,
+        sync_config_id
+    </sql>
+</mapper>

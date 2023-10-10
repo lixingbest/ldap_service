@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.token.mapper.TSysTokenMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.token.domain.TSysToken">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="token" column="token" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="expirTime" column="expir_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getCurrUser" resultType="com.plzy.ldap.modules.admin.domain.TSysAdmin">
+        select *
+        from t_sys_admin
+        where id =
+              (select user_id from t_sys_token where status = 0 and token = #{token})
+    </select>
+    <select id="validate" resultType="java.lang.Integer">
+        SELECT count(1) as ac
+        from t_sys_token
+        where token = #{token}
+          and expir_time > now()
+          and status = 0
+    </select>
+</mapper>

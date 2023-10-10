@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.domain_cluster.mapper.TLdapDomainClusterMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.domain_cluster.domain.TLdapDomainCluster">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="domainId" column="domain_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
+            <result property="ordIdx" column="ord_idx" jdbcType="INTEGER"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="serviceUrl" column="service_url" jdbcType="VARCHAR"/>
+            <result property="account" column="account" jdbcType="VARCHAR"/>
+            <result property="passwd" column="passwd" jdbcType="VARCHAR"/>
+            <result property="desc" column="desc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,domain_id,name,
+        code,ord_idx,ip,
+        service_url,account,passwd,
+        desc
+    </sql>
+</mapper>

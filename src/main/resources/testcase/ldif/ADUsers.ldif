@@ -1,0 +1,330 @@
+dn: CN=Administrator,CN=Users,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: Administrator
+description:: 566h55CG6K6h566X5py6KOWfnynnmoTlhoXnva7luJDmiLc=
+distinguishedName: CN=Administrator,CN=Users,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211031142934.0Z
+whenChanged: 20211101144450.0Z
+uSNCreated: 8196
+memberOf: 
+ CN=Group Policy Creator Owners,CN=Users,DC=addomain,DC=example,DC=com
+memberOf: CN=Domain Admins,CN=Users,DC=addomain,DC=example,DC=com
+memberOf: CN=Enterprise Admins,CN=Users,DC=addomain,DC=example,DC=com
+memberOf: CN=Schema Admins,CN=Users,DC=addomain,DC=example,DC=com
+memberOf: CN=Administrators,CN=Builtin,DC=addomain,DC=example,DC=com
+uSNChanged: 12771
+name: Administrator
+objectGUID:: oLYKUKgn4kCVKFVKLnIUAQ==
+userAccountControl: 66048
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 132808439937625599
+lastLogoff: 0
+lastLogon: 132808468595653523
+pwdLastSet: 132801924235017112
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FP9AEAAA==
+adminCount: 1
+accountExpires: 9223372036854775807
+logonCount: 62
+sAMAccountName: Administrator
+sAMAccountType: 805306368
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+isCriticalSystemObject: TRUE
+dSCorePropagationData: 20211101144450.0Z
+dSCorePropagationData: 20211101144450.0Z
+dSCorePropagationData: 20211031143037.0Z
+dSCorePropagationData: 16010101181216.0Z
+lastLogonTimestamp: 132801933545897598
+
+dn: CN=Guest,CN=Users,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: Guest
+description:: 
+ 5L6b5p2l5a6+6K6/6Zeu6K6h566X5py65oiW6K6/6Zeu5Z+f55qE5YaF572u5biQ5oi3
+distinguishedName: CN=Guest,CN=Users,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211031142934.0Z
+whenChanged: 20211031142934.0Z
+uSNCreated: 8197
+memberOf: CN=Guests,CN=Builtin,DC=addomain,DC=example,DC=com
+uSNChanged: 8197
+name: Guest
+objectGUID:: O6Ut8bu6O0KAuvtZ2wGi8Q==
+userAccountControl: 66082
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 0
+pwdLastSet: 0
+primaryGroupID: 514
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FP9QEAAA==
+accountExpires: 9223372036854775807
+logonCount: 0
+sAMAccountName: Guest
+sAMAccountType: 805306368
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+isCriticalSystemObject: TRUE
+dSCorePropagationData: 20211031143037.0Z
+dSCorePropagationData: 16010101000001.0Z
+
+dn: CN=ADSERVER,OU=Domain Controllers,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+objectClass: computer
+cn: ADSERVER
+distinguishedName: 
+ CN=ADSERVER,OU=Domain Controllers,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211031143036.0Z
+whenChanged: 20211031224016.0Z
+uSNCreated: 12293
+uSNChanged: 12760
+name: ADSERVER
+objectGUID:: B7gq+wIIWEmcnYaeV8iDMQ==
+userAccountControl: 532480
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 132808342744500665
+localPolicyFlags: 0
+pwdLastSet: 132801642533791998
+primaryGroupID: 516
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FP6AMAAA==
+accountExpires: 9223372036854775807
+logonCount: 66
+sAMAccountName: ADSERVER$
+sAMAccountType: 805306369
+operatingSystem: Windows Server 2019 Standard Evaluation
+operatingSystemVersion: 10.0 (17763)
+serverReferenceBL: 
+ CN=ADSERVER,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC
+ =addomain,DC=example,DC=com
+dNSHostName: adserver.addomain.example.com
+rIDSetReferences: 
+ CN=RID Set,CN=ADSERVER,OU=Domain Controllers,DC=addomain,DC=example,DC=com
+servicePrincipalName: 
+ Dfsr-12F9A27C-BF97-4787-9364-D31B6C55EB04/adserver.addomain.example.com
+servicePrincipalName: 
+ ldap/adserver.addomain.example.com/ForestDnsZones.addomain.example.com
+servicePrincipalName: 
+ ldap/adserver.addomain.example.com/DomainDnsZones.addomain.example.com
+servicePrincipalName: TERMSRV/ADSERVER
+servicePrincipalName: TERMSRV/adserver.addomain.example.com
+servicePrincipalName: DNS/adserver.addomain.example.com
+servicePrincipalName: GC/adserver.addomain.example.com/addomain.example.com
+servicePrincipalName: RestrictedKrbHost/adserver.addomain.example.com
+servicePrincipalName: RestrictedKrbHost/ADSERVER
+servicePrincipalName: 
+ RPC/3df6b6e5-7107-4829-80d5-59c7128618eb._msdcs.addomain.example.com
+servicePrincipalName: HOST/ADSERVER/ADDOMAIN
+servicePrincipalName: HOST/adserver.addomain.example.com/ADDOMAIN
+servicePrincipalName: HOST/ADSERVER
+servicePrincipalName: HOST/adserver.addomain.example.com
+servicePrincipalName: HOST/adserver.addomain.example.com/addomain.example.com
+servicePrincipalName: 
+ E3514235-4B06-11D1-AB04-00C04FC2DCD2/3df6b6e5-7107-4829-80d5-59c7128618eb/addo
+ main.example.com
+servicePrincipalName: ldap/ADSERVER/ADDOMAIN
+servicePrincipalName: 
+ ldap/3df6b6e5-7107-4829-80d5-59c7128618eb._msdcs.addomain.example.com
+servicePrincipalName: ldap/adserver.addomain.example.com/ADDOMAIN
+servicePrincipalName: ldap/ADSERVER
+servicePrincipalName: ldap/adserver.addomain.example.com
+servicePrincipalName: ldap/adserver.addomain.example.com/addomain.example.com
+objectCategory: 
+ CN=Computer,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+isCriticalSystemObject: TRUE
+dSCorePropagationData: 20211031143037.0Z
+dSCorePropagationData: 16010101000001.0Z
+lastLogonTimestamp: 132801930227928885
+msDS-SupportedEncryptionTypes: 28
+msDS-GenerationId:: EgTnUYk3h0o=
+msDFSR-ComputerReferenceBL: 
+ CN=ADSERVER,CN=Topology,CN=Domain System Volume,CN=DFSR-GlobalSettings,CN=Syst
+ em,DC=addomain,DC=example,DC=com
+
+dn: CN=krbtgt,CN=Users,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: krbtgt
+description:: 5a+G6ZKl5Y+R6KGM5Lit5b+D5pyN5Yqh5biQ5oi3
+distinguishedName: CN=krbtgt,CN=Users,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211031143037.0Z
+whenChanged: 20211101144450.0Z
+uSNCreated: 12324
+memberOf: 
+ CN=Denied RODC Password Replication Group,CN=Users,DC=addomain,DC=example,DC=c
+ om
+uSNChanged: 12786
+showInAdvancedViewOnly: TRUE
+name: krbtgt
+objectGUID:: yWxg8Xif2U+TSKkYWGdY1A==
+userAccountControl: 514
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 0
+pwdLastSet: 132801642370510846
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FP9gEAAA==
+adminCount: 1
+accountExpires: 9223372036854775807
+logonCount: 0
+sAMAccountName: krbtgt
+sAMAccountType: 805306368
+servicePrincipalName: kadmin/changepw
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+isCriticalSystemObject: TRUE
+dSCorePropagationData: 20211101144450.0Z
+dSCorePropagationData: 20211031143037.0Z
+dSCorePropagationData: 16010101000416.0Z
+msDS-SupportedEncryptionTypes: 0
+
+dn: CN=IPADOMAIN$,CN=Users,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: IPADOMAIN$
+distinguishedName: CN=IPADOMAIN$,CN=Users,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211102114251.0Z
+whenChanged: 20211102114409.0Z
+uSNCreated: 20498
+uSNChanged: 20521
+name: IPADOMAIN$
+objectGUID:: KTaHhU8yCUeHLKGcmJ5bIA==
+userAccountControl: 2080
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 132803292411256303
+pwdLastSet: 132803269718960373
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FPbAQAAA==
+accountExpires: 9223372036854775807
+logonCount: 5
+sAMAccountName: IPADOMAIN$
+sAMAccountType: 805306370
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+isCriticalSystemObject: TRUE
+dSCorePropagationData: 16010101000000.0Z
+lastLogonTimestamp: 132803270497036610
+
+dn:: Q049eGlhb3poYW5nLE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: xiaozhang
+c: CN
+l:: 5rWO5Y2X
+st:: 5bGx5Lic
+title:: 5LiA6Iis6IGM5Yqh
+description:: 6L+Z5piv5bCP5byg55qE5L+h5oGv
+postalCode: 710078
+physicalDeliveryOfficeName:: 56eR5oqA5aSE
+telephoneNumber: 13186082951
+givenName: xiaozhang
+distinguishedName:: 
+ Q049eGlhb3poYW5nLE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+instanceType: 4
+whenCreated: 20211108121945.0Z
+whenChanged: 20211108121945.0Z
+displayName: xiaozhang
+uSNCreated: 24954
+uSNChanged: 24960
+co:: 5Lit5Zu9
+company:: 5rWO5Y2X5rW35YWz
+name: xiaozhang
+objectGUID:: 7cpLXkjKr0ezeyELkwDSrA==
+userAccountControl: 512
+badPwdCount: 0
+codePage: 0
+countryCode: 156
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 0
+pwdLastSet: 0
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FPbwQAAA==
+accountExpires: 9223372036854775807
+logonCount: 0
+sAMAccountName: xiaozhang
+sAMAccountType: 805306368
+userPrincipalName: xiaozhang@addomain.example.com
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+dSCorePropagationData: 20211108121945.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: Q049eGlhb2xpLE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: xiaoli
+givenName: xiaoli
+distinguishedName:: 
+ Q049eGlhb2xpLE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+instanceType: 4
+whenCreated: 20211108122012.0Z
+whenChanged: 20211108122012.0Z
+displayName: xiaoli
+uSNCreated: 24962
+uSNChanged: 24968
+name: xiaoli
+objectGUID:: 121OI6mUcUOrlUEBo517gQ==
+userAccountControl: 512
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 0
+pwdLastSet: 0
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAA21rvE2sWsX3D68FPcAQAAA==
+accountExpires: 9223372036854775807
+logonCount: 0
+sAMAccountName: xiaoli
+sAMAccountType: 805306368
+userPrincipalName: xiaoli@addomain.example.com
+objectCategory: 
+ CN=Person,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=com
+dSCorePropagationData: 20211108122012.0Z
+dSCorePropagationData: 16010101000000.0Z
+

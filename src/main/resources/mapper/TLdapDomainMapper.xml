@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.domain.mapper.TLdapDomainMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.domain.domain.TLdapDomain">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="pid" column="pid" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="domainName" column="dn" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="comments" column="comments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="tree" resultType="com.plzy.ldap.modules.domain.dto.DomainTree">
+        select * from
+            (
+                select concat(id,'-','0') as id,concat(pid,'-0') as pid, name,0 as type,dn,up_status, ord_idx from t_ldap_domain
+                union all
+                select concat(id,'-','1') as id,concat(pid,'-',pid_type) as pid, name,1 as type,dn,null as up_status,ord_idx from t_ldap_ou
+            ) t order by CONVERT(name USING gbk);
+    </select>
+
+    <select id="treeWithoutOu" resultType="com.plzy.ldap.modules.domain.dto.DomainTree">
+        select id,pid, name,0 as type,dn,up_status from t_ldap_domain
+    </select>
+    <select id="listSubdomain" resultType="com.plzy.ldap.modules.domain.domain.TLdapDomain">
+        select * from t_ldap_domain where pid is not null and up_status=0
+    </select>
+
+</mapper>

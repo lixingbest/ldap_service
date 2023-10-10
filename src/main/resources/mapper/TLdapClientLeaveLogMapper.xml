@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.client.mapper.TLdapClientLeaveLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.client.domain.TLdapClientLeaveLog">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="hostname" column="hostname" jdbcType="VARCHAR"/>
+        <result property="domain" column="domain" jdbcType="VARCHAR"/>
+        <result property="clientVersion" column="client_version" jdbcType="VARCHAR"/>
+        <result property="arch" column="arch" jdbcType="VARCHAR"/>
+        <result property="sysName" column="sys_name" jdbcType="VARCHAR"/>
+        <result property="sysVersion" column="sys_version" jdbcType="VARCHAR"/>
+        <result property="sysCmpt" column="sys_cmpt" jdbcType="TINYINT"/>
+        <result property="user" column="user" jdbcType="VARCHAR"/>
+        <result property="ip" column="ip" jdbcType="VARCHAR"/>
+        <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+        <result property="step" column="step" jdbcType="TINYINT"/>
+        <result property="result" column="result" jdbcType="TINYINT"/>
+        <result property="log" column="log" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,hostname,domain,
+        client_version,arch,sys_name,
+        sys_version,sys_cmpt,user,
+        ip,begin_time,end_time,
+        step,result,log
+    </sql>
+    <select id="page" resultType="com.plzy.ldap.modules.client.dto.ClientLeaveLogDto">
+        select lcll.id, hostname, domain, client_version, arch, sys_name, sys_version, sys_cmpt, user, lcll.ip,
+        begin_time, end_time, step, result, log from t_ldap_client_leave_log lcll
+        left join t_ldap_domain tld on tld.domain_name = lcll.domain
+        <where>
+            <if test="params.domainId!=null">
+              and  tld.id = #{params.domainId}
+            </if>
+            <if test="params.type!=null and params.type &lt; 2">
+              and  lcll.result = #{params.result}
+            </if>
+            <if test="params.type!=null and params.type == 2">
+              and  lcll.result is null
+            </if>
+            <if test="params.hostname!=null and params.hostname!=''">
+              and  lcll.hostname like concat('%', #{params.hostname},'%')
+            </if>
+            <if test="params.user!=null and params.user!=''">
+              and  lcll.user like concat('%', #{params.user},'%')
+            </if>
+            <if test="params.domain!=null and params.domain!=''">
+              and  lcll.domain like concat('%', #{params.domain},'%')
+            </if>
+            <if test="params.clientVersion!=null and params.clientVersion!=''">
+             and   lcll.client_version like concat('%', #{params.clientVersion},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

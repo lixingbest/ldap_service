@@ -1,0 +1,289 @@
+dn: OU=Domain Controllers,DC=addomain,DC=example,DC=com
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou: Domain Controllers
+description: Default container for domain controllers
+distinguishedName: OU=Domain Controllers,DC=addomain,DC=example,DC=com
+instanceType: 4
+whenCreated: 20211031142933.0Z
+whenChanged: 20211031142933.0Z
+uSNCreated: 5804
+uSNChanged: 5804
+showInAdvancedViewOnly: FALSE
+name: Domain Controllers
+objectGUID:: tyWL/pJUrEmmIudJKoITqQ==
+systemFlags: -1946157056
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+isCriticalSystemObject: TRUE
+gPLink: 
+ [LDAP://CN={6AC1786C-016F-11D2-945F-00C04fB984F9},CN=Policies,CN=System,DC=add
+ omain,DC=example,DC=com;0]
+dSCorePropagationData: 20211101151440.0Z
+dSCorePropagationData: 20211031143037.0Z
+dSCorePropagationData: 16010101000416.0Z
+
+dn:: T1U95Yqe5YWs5a6k77yI5YWa5aeU5Yqe5YWs5a6k77yJLERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5Yqe5YWs5a6k77yI5YWa5aeU5Yqe5YWs5a6k77yJ
+distinguishedName:: 
+ T1U95Yqe5YWs5a6k77yI5YWa5aeU5Yqe5YWs5a6k77yJLERDPWFkZG9tYWluLERDPWV4YW1wbGUsRE
+ M9Y29t
+instanceType: 4
+whenCreated: 20211108112231.0Z
+whenChanged: 20211108112231.0Z
+uSNCreated: 24921
+uSNChanged: 24922
+name:: 5Yqe5YWs5a6k77yI5YWa5aeU5Yqe5YWs5a6k77yJ
+objectGUID:: Xtqx2BwJCkW5sFIHzkai1w==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112231.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95rOV6KeE5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5rOV6KeE5aSE
+distinguishedName:: T1U95rOV6KeE5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112241.0Z
+whenChanged: 20211108112241.0Z
+uSNCreated: 24923
+uSNChanged: 24924
+name:: 5rOV6KeE5aSE
+objectGUID:: fzBgclWwoESC6078YxllQQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112241.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U957u85ZCI5Lia5Yqh5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 57u85ZCI5Lia5Yqh5aSE
+distinguishedName:: 
+ T1U957u85ZCI5Lia5Yqh5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112255.0Z
+whenChanged: 20211108112255.0Z
+uSNCreated: 24925
+uSNChanged: 24926
+name:: 57u85ZCI5Lia5Yqh5aSE
+objectGUID:: k5RdDE3mI0WMcbboEg/ifg==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112255.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95YWz56iO5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5YWz56iO5aSE
+distinguishedName:: T1U95YWz56iO5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112312.0Z
+whenChanged: 20211108112312.0Z
+uSNCreated: 24927
+uSNChanged: 24928
+name:: 5YWz56iO5aSE
+objectGUID:: TUmEcGVnXEquz3H/bKHrdg==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112312.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95Y2r55Sf5qOA55ar5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5Y2r55Sf5qOA55ar5aSE
+distinguishedName:: 
+ T1U95Y2r55Sf5qOA55ar5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112325.0Z
+whenChanged: 20211108112325.0Z
+uSNCreated: 24929
+uSNChanged: 24930
+name:: 5Y2r55Sf5qOA55ar5aSE
+objectGUID:: AKXO9E8liEGBTQlZeydWjA==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112325.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95Yqo5qSN54mp5qOA55ar5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5Yqo5qSN54mp5qOA55ar5aSE
+distinguishedName:: 
+ T1U95Yqo5qSN54mp5qOA55ar5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112340.0Z
+whenChanged: 20211108112340.0Z
+uSNCreated: 24931
+uSNChanged: 24932
+name:: 5Yqo5qSN54mp5qOA55ar5aSE
+objectGUID:: dRHafbw8RkymU3V5VhjyCQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112340.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U96L+b5Ye65Y+j6aOf5ZOB5a6J5YWo5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 6L+b5Ye65Y+j6aOf5ZOB5a6J5YWo5aSE
+distinguishedName:: 
+ T1U96L+b5Ye65Y+j6aOf5ZOB5a6J5YWo5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112356.0Z
+whenChanged: 20211108112356.0Z
+uSNCreated: 24933
+uSNChanged: 24934
+name:: 6L+b5Ye65Y+j6aOf5ZOB5a6J5YWo5aSE
+objectGUID:: 8+OSJFa36kajb7MsEwgwAQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112356.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95ZWG5ZOB5qOA6aqM5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5ZWG5ZOB5qOA6aqM5aSE
+distinguishedName:: 
+ T1U95ZWG5ZOB5qOA6aqM5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112413.0Z
+whenChanged: 20211108112413.0Z
+uSNCreated: 24935
+uSNChanged: 24936
+name:: 5ZWG5ZOB5qOA6aqM5aSE
+objectGUID:: LR+NhPqxeUuiTbzZfsHQyQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112413.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U95Y+j5bK455uR566h5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 5Y+j5bK455uR566h5aSE
+distinguishedName:: 
+ T1U95Y+j5bK455uR566h5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112427.0Z
+whenChanged: 20211108112427.0Z
+uSNCreated: 24937
+uSNChanged: 24938
+name:: 5Y+j5bK455uR566h5aSE
+objectGUID:: yJBfP4WGG0OKrHdr88rYiQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112427.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U957uf6K6h5YiG5p6Q5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 57uf6K6h5YiG5p6Q5aSE
+distinguishedName:: 
+ T1U957uf6K6h5YiG5p6Q5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112441.0Z
+whenChanged: 20211108112441.0Z
+uSNCreated: 24939
+uSNChanged: 24940
+name:: 57uf6K6h5YiG5p6Q5aSE
+objectGUID:: AMLuQzq7jUqi4JxlbJIyEA==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108112441.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U956eR5oqA5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 56eR5oqA5aSE
+distinguishedName:: T1U956eR5oqA5aSELERDPWFkZG9tYWluLERDPWV4YW1wbGUsREM9Y29t
+instanceType: 4
+whenCreated: 20211108112454.0Z
+whenChanged: 20211108121022.0Z
+uSNCreated: 24941
+uSNChanged: 24949
+name:: 56eR5oqA5aSE
+objectGUID:: MPSyt5A6w065DOppfSH3DQ==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108121022.0Z
+dSCorePropagationData: 20211108112454.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U956ys5LiA5bCP57uELE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 56ys5LiA5bCP57uE
+distinguishedName:: 
+ T1U956ys5LiA5bCP57uELE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ
+ ==
+instanceType: 4
+whenCreated: 20211108121022.0Z
+whenChanged: 20211108121022.0Z
+uSNCreated: 24948
+uSNChanged: 24950
+name:: 56ys5LiA5bCP57uE
+objectGUID:: ai43uqO0tk+V2qd+SqSSxg==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108121022.0Z
+dSCorePropagationData: 20211108121022.0Z
+dSCorePropagationData: 16010101000000.0Z
+
+dn:: T1U956ys5LqM5bCP57uELE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ==
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou:: 56ys5LqM5bCP57uE
+distinguishedName:: 
+ T1U956ys5LqM5bCP57uELE9VPeenkeaKgOWkhCxEQz1hZGRvbWFpbixEQz1leGFtcGxlLERDPWNvbQ
+ ==
+instanceType: 4
+whenCreated: 20211108121032.0Z
+whenChanged: 20211108121032.0Z
+uSNCreated: 24951
+uSNChanged: 24952
+name:: 56ys5LqM5bCP57uE
+objectGUID:: 13tpm4VtKkOq2z4Amw7UCA==
+objectCategory: 
+ CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=addomain,DC=example,DC=co
+ m
+dSCorePropagationData: 20211108121032.0Z
+dSCorePropagationData: 16010101000000.0Z
+

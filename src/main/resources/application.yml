@@ -1,0 +1,58 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /service
+
+ldap:
+  ldif_upload_path: /Users/lixingbest/Downloads/ldap_fs
+  cacheTTL: 600000
+  serviceUrl: http://47.93.124.228:6930/service/
+  tempPath: /Users/lixingbest/Downloads/ldap_fs
+  ansiblePath: /System/Volumes/Data/Users/lixingbest/Library/Python/3.9/bin/ansible
+  strategy:
+    strategy_wallpaper_upload_path: /Users/lixingbest/Downloads/ldap_fs
+    strategyPyscriptPath: /Users/lixingbest/Downloads/ldap_fs
+    sudo_account:
+      account: lixingbest
+      password: tswcbyy5413LX
+  # 接口超时时间，单位：分钟
+  session-timeout: 720
+  # ldap域控服务器的前缀，用于界面中区别哪些是域控哪些是普通终端
+  dc-prefix: ldap
+  # ldap缓存时间
+  ldap-cache-timeout: 21600000
+  sudoUserPasswd: '{"jn.gacc.hg.cn": "lixingbest,tswcbyy5413LX"}'
+
+
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      strict: false
+      datasource:
+        master:
+#          url: "jdbc:mysql://192.168.1.20/ldap?characterEncoding=utf-8"
+          url: "jdbc:mysql://42.192.39.177:6883/ldap?characterEncoding=utf-8"
+          username: "root"
+          password: "tswcbyy5413LX"
+
+  application:
+    name: ldapservice
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: INFO
+#  file:
+#    path: logs
+#    max-size: 500MB
+#    max-history: 10
+
+

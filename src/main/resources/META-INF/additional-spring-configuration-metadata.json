@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "ldap.domain.dn",
+      "type": "java.lang.String",
+      "description": "Description for ldap.domain.dn."
+  }
+] }

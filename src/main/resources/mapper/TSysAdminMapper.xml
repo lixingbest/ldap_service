@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plzy.ldap.modules.admin.mapper.TSysAdminMapper">
+
+    <resultMap id="BaseResultMap" type="com.plzy.ldap.modules.admin.domain.TSysAdmin">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+        <result property="jobno" column="jobno" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="TINYINT"/>
+        <result property="idcard" column="idcard" jdbcType="VARCHAR"/>
+        <result property="dept" column="dept" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,name,password,
+        telephone,jobno,sex,
+        idcard,dept,status,
+        birthday
+    </sql>
+    <select id="list" resultType="com.plzy.ldap.modules.admin.dto.SysAdminWithNameDTO">
+        select o.id,name,telephone,jobno,sex,idcard,dept,status,birthday,scope,ou_id,mgt_domain_id,
+        (select name from t_ldap_ou where id=o.ou_id) as ou,
+        (select name from t_ldap_domain where id=o.mgt_domain_id) as mgt_domain,
+        r.role_id,
+        (select name from t_role ro where ro.id=r.role_id ) as role_name
+        from t_sys_admin o left join t_role_user_ref r on o.id=r.user_id and r.is_temporary!=1
+        where o.ou_id in
+        <foreach collection="domainIdSet" item="id" separator="," open="(" close=")">#{id}</foreach>
+        <if test="condition.name != null">
+            and o.name like concat('%','${condition.name}','%')
+        </if>
+        <if test="condition.telephone != null">
+            and o.telephone like concat('%','${condition.telephone}','%')
+        </if>
+        order by scope asc
+    </select>
+</mapper>
