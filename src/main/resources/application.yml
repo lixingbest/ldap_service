@@ -21,7 +21,7 @@ ldap:
   dc-prefix: ldap
   # ldap缓存时间
   ldap-cache-timeout: 21600000
-  sudoUserPasswd: '{"jn.gacc.hg.cn": "lixingbest,tswcbyy5413LX"}'
+  sudoUserPasswd: '{"example.cn": "lixingbest,tswcbyy5413LX"}'
 
 
 spring:
@@ -31,8 +31,7 @@ spring:
       strict: false
       datasource:
         master:
-#          url: "jdbc:mysql://192.168.1.20/ldap?characterEncoding=utf-8"
-          url: "jdbc:mysql://42.192.39.177:6883/ldap?characterEncoding=utf-8"
+          url: "jdbc:mysql://127.0.0.1/ldap?characterEncoding=utf-8"
           username: "root"
           password: "tswcbyy5413LX"
 

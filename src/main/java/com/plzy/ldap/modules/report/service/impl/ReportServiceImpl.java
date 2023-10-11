@@ -129,8 +129,8 @@ public class ReportServiceImpl implements ReportService {
         // 统计客户端安装情况
         List<Map<String, Integer>> installStat = instLogService.getInstallStat(domainObj.getDomainName());
 
-        // 统计济南海关二级机构的终端安装量
-        // 查询济南海关的所有二级机构
+        // 统计二级机构的终端安装量
+        // 查询所有二级机构
         List<TLdapOu> ouList = ldapOuService.list(new LambdaQueryWrapper<TLdapOu>().eq(TLdapOu::getPid, 3130));
         // 统计访问日志，并按ou进行分组
         List<TLdapClientAccessLog> logs = accessLogService.groupByOu(domainId);

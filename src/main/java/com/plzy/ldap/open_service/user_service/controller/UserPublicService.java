@@ -48,7 +48,7 @@ public class UserPublicService {
         // 如果不是UPN格式，则自动处理
         if(user.indexOf("/") == -1 && user.indexOf("@") == -1){
             log.info("发现user不是UPN格式，即将自动处理");
-            // 如果是济南海关，则拼接前缀
+            // 如果是jn，则拼接前缀
             if(user.startsWith("jn")){
                 String newUser = "jn/" + user;
                 log.info("已生成UPN格式，原名称：" + user + "，新名称：" + newUser);

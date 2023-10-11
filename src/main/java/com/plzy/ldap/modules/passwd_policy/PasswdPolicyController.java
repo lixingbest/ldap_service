@@ -29,7 +29,7 @@ public class PasswdPolicyController {
     @GetMapping("/list")
     public ResponseEntity<ResponseData> list(Long domainId, String group){
 
-        // 如果是总署，则遍历所有的域
+        // 如果是根域，则遍历所有的域
         if(domainId == 1){
             List result = new ArrayList();
             List<TLdapDomain> domains = domainService.listSubdomain();

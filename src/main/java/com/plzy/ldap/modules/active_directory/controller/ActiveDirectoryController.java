@@ -23,7 +23,7 @@ public class ActiveDirectoryController {
     @GetMapping("/list")
     public ResponseEntity<ResponseData> list(Long domainId, String domainName){
 
-        // 根域名海关总署不能点击
+        // 根域名不能点击
         if(domainId == 1L){
             return ResponseEntity.ok(ResponseData.success());
         }
@@ -35,7 +35,7 @@ public class ActiveDirectoryController {
     @GetMapping("/settings")
     public ResponseEntity<ResponseData> settings(Long domainId){
 
-        // 根域名海关总署不能点击
+        // 根域名不能点击
         if(domainId == 1L){
             return ResponseEntity.ok(ResponseData.success());
         }

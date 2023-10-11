@@ -50,7 +50,7 @@ public class PasswordChangeJob {
 
                     log.info("即将修改 "+uid+" 的密码");
 
-                    String out = ProcessUtil.exec(new String[]{"/usr/bin/expect","/opt/passwd.sh",uid+"@jn.gacc.hg.cn"});
+                    String out = ProcessUtil.exec(new String[]{"/usr/bin/expect","/opt/passwd.sh",uid+"@example.cn"});
                     if(out.indexOf("鉴定故障") == -1){
                         success ++;
                     }else {

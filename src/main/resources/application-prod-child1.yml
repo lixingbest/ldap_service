@@ -30,7 +30,7 @@ spring:
       strict: false
       datasource:
         master:
-          url: "jdbc:mysql://172.9.1.138/ldap?characterEncoding=utf-8"
+          url: "jdbc:mysql://127.0.0.1/ldap?characterEncoding=utf-8"
           username: "root"
           password: "tswcbyy5413LX"
 

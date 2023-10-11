@@ -159,7 +159,7 @@ public class AdminController {
             errorCount.remove(sysAdmin.getJobno());
 
             // 获取ipa凭证
-            // 只有在选择非海关总署根域时才请求，因为海关总署实际上没有对应真正的域
+            // 只有在选择非根域时才请求，因为根域实际上没有对应真正的域
 //            if(sysAdmin.getMgtDomainId() != 1L){
 //                String cookie = ldapAuthService.authWithAdmin(sysAdmin.getMgtDomainId());
 //                domainCacheService.updateCookie(sysAdmin.getMgtDomainId(), cookie);
